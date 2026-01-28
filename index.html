@@ -1,1 +1,28 @@
- <!doctype html> <html> <head><meta charset="utf-8"><title>AXIS</title></head> <body><h1>Hello from AXIS</h1><p>GitHub Pages test</p></body> </html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXIS掲示板</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <h1>AXIS掲示板</h1>
+
+    <div class="input-area">
+      <input type="text" id="nameInput" placeholder="名前">
+      <input type="text" id="messageInput" placeholder="メッセージ">
+      <button id="sendBtn">投稿</button>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
