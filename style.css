@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e6ecf0; /* Twitter風淡いグレー背景 */
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.container {
+  width: 500px;
+}
+
+h1 {
+  text-align: center;
+  color: #1DA1F2; /* Twitterブルー */
+  margin-bottom: 20px;
+}
+
+/* 入力エリア */
+.input-area {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.input-area button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #1DA1F2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  opacity: 0.9;
+}
+
+/* メッセージエリア */
+.messages {
+  display: flex;
+  flex-direction: column-reverse; /* 新しい投稿を上に */
+  gap: 15px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* 投稿カード */
+.message-card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.message-header {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #888;
+  margin-left: auto;
+}
+
+.message-content {
+  font-size: 15px;
+  color: #333;
+  word-wrap: break-word;
+}
