@@ -1,84 +1,90 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --text: #1f2937;
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #e6ecf0; /* Twitter風淡いグレー背景 */
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: linear-gradient(140deg, #eef2ff, var(--bg));
+  color: var(--text);
 }
 
 .container {
-  width: 500px;
+  width: min(920px, calc(100% - 32px));
+  margin: 28px auto 40px;
 }
 
-h1 {
-  text-align: center;
-  color: #1DA1F2; /* Twitterブルー */
-  margin-bottom: 20px;
+.lead { color: var(--muted); }
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
-/* 入力エリア */
-.input-area {
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.wide { grid-column: 1 / -1; }
+
+label {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.92rem;
 }
 
-.input-area input {
-  flex: 1;
-  padding: 10px 15px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+input, select, textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
 }
 
-.input-area button {
-  padding: 10px 20px;
-  border-radius: 25px;
+.button-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+button {
   border: none;
-  background: #1DA1F2;
-  color: white;
-  font-weight: bold;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  padding: 11px 18px;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.input-area button:hover {
-  opacity: 0.9;
-}
+button:disabled { opacity: 0.7; cursor: wait; }
+.secondary { background: #e5e7eb; color: #111827; }
 
-/* メッセージエリア */
-.messages {
-  display: flex;
-  flex-direction: column-reverse; /* 新しい投稿を上に */
-  gap: 15px;
-  max-height: 600px;
-  overflow-y: auto;
-}
+.settings { margin: 10px 0 12px; }
+.settings summary { cursor: pointer; color: #1d4ed8; font-weight: 600; }
 
-/* 投稿カード */
-.message-card {
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-}
+.status, .hint { color: var(--muted); font-size: 0.88rem; }
 
-.message-header {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
+.result-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.result-item { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; }
+.result-title { margin: 0; font-weight: 700; }
+.result-meta { margin: 5px 0; color: var(--muted); font-size: 0.9rem; }
+.reason { margin: 0; font-size: 0.92rem; }
+.placeholder { color: var(--muted); }
 
-.message-time {
-  font-size: 12px;
-  color: #888;
-  margin-left: auto;
-}
-
-.message-content {
-  font-size: 15px;
-  color: #333;
-  word-wrap: break-word;
+.sql-note {
+  margin: 8px 0 0;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-x: auto;
 }
