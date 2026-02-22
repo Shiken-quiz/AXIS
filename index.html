@@ -3,26 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXIS掲示板</title>
+  <title>音楽レコメンドAXIS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <main class="container">
+    <header class="hero">
+      <p class="eyebrow">AI MUSIC CURATOR</p>
+      <h1>🎧 音楽レコメンドAXIS</h1>
+      <p class="lead">AIだけであなた向けの曲を推薦。白基調の見やすいUIで、結果はSupabaseへ保存できます。</p>
+    </header>
 
-    <h1>AXIS掲示板</h1>
+    <section class="card">
+      <h2>プロフィール入力</h2>
+      <div class="form-grid">
+        <label>
+          好きな曲 / アーティスト（複数はカンマ区切り）
+          <input id="favoriteInput" type="text" placeholder="例: 夜に駆ける, 米津玄師, Official髭男dism">
+        </label>
 
-    <div class="input-area">
-      <input type="text" id="nameInput" placeholder="名前">
-      <input type="text" id="messageInput" placeholder="メッセージ">
-      <button id="sendBtn">投稿</button>
-    </div>
+        <label>
+          年齢
+          <input id="ageInput" type="number" min="0" max="120" placeholder="例: 27">
+        </label>
 
-    <div class="messages" id="messages"></div>
+        <label>
+          職業
+          <select id="jobInput">
+            <option value="">選択してください</option>
+            <option value="student">学生</option>
+            <option value="engineer">エンジニア</option>
+            <option value="creator">クリエイター</option>
+            <option value="office">会社員</option>
+            <option value="medical">医療・福祉</option>
+            <option value="service">接客・サービス</option>
+            <option value="other">その他</option>
+          </select>
+        </label>
 
-  </div>
+        <label>
+          今の気分
+          <select id="moodInput">
+            <option value="">選択してください</option>
+            <option value="focus">集中したい</option>
+            <option value="relax">ゆっくりしたい</option>
+            <option value="happy">テンションを上げたい</option>
+            <option value="healing">癒されたい</option>
+            <option value="nostalgic">エモく浸りたい</option>
+          </select>
+        </label>
+
+        <label class="wide">
+          AIへの追加メモ（任意）
+          <textarea id="noteInput" rows="3" placeholder="例: 夜の作業中に聴く、歌詞重視"></textarea>
+        </label>
+      </div>
+
+      <details class="settings" open>
+        <summary>AI設定（必須）</summary>
+        <div class="form-grid">
+          <label class="wide">
+            OpenAI API Key
+            <input id="apiKeyInput" type="password" placeholder="sk-..." autocomplete="off">
+          </label>
+          <label>
+            モデル
+            <input id="modelInput" type="text" value="gpt-4o-mini">
+          </label>
+          <label>
+            API Base URL
+            <input id="apiBaseInput" type="text" value="https://api.openai.com/v1">
+          </label>
+        </div>
+      </details>
+
+      <details class="settings">
+        <summary>Supabase設定（任意）</summary>
+        <div class="form-grid">
+          <label>
+            Supabase URL
+            <input id="sbUrlInput" type="text" placeholder="https://xxx.supabase.co">
+          </label>
+          <label>
+            Supabase Anon Key
+            <input id="sbAnonKeyInput" type="password" placeholder="eyJ..." autocomplete="off">
+          </label>
+        </div>
+      </details>
+
+      <div class="button-row">
+        <button id="recommendBtn">AIで推薦する</button>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <h2>おすすめ結果</h2>
+      <ul id="resultList" class="result-list">
+        <li class="placeholder">まだ結果がありません。</li>
+      </ul>
+    </section>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>
-

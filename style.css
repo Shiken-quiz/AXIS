@@ -1,84 +1,153 @@
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-soft: #fcfdff;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #2f6fec;
+  --primary-soft: #eef4ff;
+  --shadow: 0 16px 42px rgba(31, 41, 55, 0.08);
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #e6ecf0; /* Twitter風淡いグレー背景 */
-  display: flex;
-  justify-content: center;
-  padding: 30px 0;
+  font-family: "Inter", "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 8% -10%, #f2f7ff 0%, transparent 32%),
+    radial-gradient(circle at 92% 0%, #f7f0ff 0%, transparent 24%),
+    var(--bg);
 }
 
 .container {
-  width: 500px;
+  width: min(940px, calc(100% - 32px));
+  margin: 30px auto 44px;
 }
 
-h1 {
-  text-align: center;
-  color: #1DA1F2; /* Twitterブルー */
-  margin-bottom: 20px;
+.hero {
+  background: linear-gradient(130deg, var(--surface), var(--surface-soft));
+  border: 1px solid #edf0f4;
+  border-radius: 22px;
+  padding: 26px 24px;
+  box-shadow: var(--shadow);
 }
 
-/* 入力エリア */
-.input-area {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: #7c8aa3;
+  font-weight: 700;
 }
 
-.input-area input {
-  flex: 1;
-  padding: 10px 15px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+h1 { margin: 0; font-size: 1.85rem; }
+
+.lead { margin: 10px 0 0; color: var(--muted); line-height: 1.7; }
+
+.card {
+  margin-top: 16px;
+  background: var(--surface);
+  border: 1px solid #edf0f4;
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--shadow);
 }
 
-.input-area button {
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: none;
-  background: #1DA1F2;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+h2 { margin: 0 0 14px; font-size: 1.08rem; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 12px;
 }
 
-.input-area button:hover {
-  opacity: 0.9;
-}
+.wide { grid-column: 1 / -1; }
 
-/* メッセージエリア */
-.messages {
-  display: flex;
-  flex-direction: column-reverse; /* 新しい投稿を上に */
-  gap: 15px;
-  max-height: 600px;
-  overflow-y: auto;
-}
-
-/* 投稿カード */
-.message-card {
-  background: white;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+label {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  font-size: 0.91rem;
+  color: #374151;
 }
 
-.message-header {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
+input, select, textarea {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  color: var(--ink);
 }
 
-.message-time {
-  font-size: 12px;
-  color: #888;
-  margin-left: auto;
+input:focus, select:focus, textarea:focus {
+  border-color: #c7d7ff;
+  outline: 3px solid #edf3ff;
 }
 
-.message-content {
-  font-size: 15px;
-  color: #333;
-  word-wrap: break-word;
+textarea { resize: vertical; min-height: 80px; }
+
+.settings {
+  margin: 10px 0 14px;
+  background: #fbfcff;
+  border: 1px solid #edf1f8;
+  border-radius: 12px;
+  padding: 10px 12px;
 }
+
+.settings summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #335ea9;
+}
+
+.button-row { display: flex; gap: 10px; }
+
+button {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), #4b7fff);
+  color: #fff;
+  padding: 11px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(47, 111, 236, 0.24);
+}
+
+button:hover { filter: brightness(1.03); }
+button:disabled { opacity: 0.68; cursor: wait; }
+
+.status {
+  margin: 10px 0 0;
+  font-size: 0.89rem;
+  color: #4b5563;
+  background: var(--primary-soft);
+  border: 1px solid #d9e6ff;
+  border-radius: 10px;
+  padding: 9px 10px;
+}
+
+.result-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.result-item {
+  border: 1px solid #ebeff6;
+  border-left: 4px solid #bfd5ff;
+  border-radius: 12px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff, #fdfefe);
+}
+
+.result-title { margin: 0; font-weight: 700; }
+.result-meta { margin: 6px 0; color: var(--muted); font-size: 0.9rem; }
+.reason { margin: 0; font-size: 0.92rem; line-height: 1.55; }
+.placeholder { color: var(--muted); }
